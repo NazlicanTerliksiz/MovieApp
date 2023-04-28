@@ -40,7 +40,8 @@ class MovieAdapter(private val movieList : MovieModel, private val listener : Li
 
          holder.binding.apply {
              movieNameText.text = movie.original_title
-             Picasso.get().load(movie.poster_path).into(movieImageView)
+             val url = "https://image.tmdb.org/t/p/w500"
+             Picasso.get().load(url + movie.poster_path).into(movieImageView)
          }
      }
 }
