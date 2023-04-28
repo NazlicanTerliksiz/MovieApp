@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity(), MovieAdapter.Listener {
 
     private lateinit var binding: ActivityMainBinding
     private val BASE_URL = "https://api.themoviedb.org/"
-    private var movieModels : ArrayList<MovieModel>? = null
+    private var movieModels : MovieModel? = null
     private var movieAdapter : MovieAdapter?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,14 +44,14 @@ class MainActivity : AppCompatActivity(), MovieAdapter.Listener {
         val service = retrofit.create(MovieAPI::class.java)
         val call = service.getData()
 
-        call.enqueue(object: Callback<List<MovieModel>>{
+        call.enqueue(object: Callback<MovieModel>{
             override fun onResponse(
-                call: Call<List<MovieModel>>,
-                response: Response<List<MovieModel>>
+                call: Call<MovieModel>,
+                response: Response<MovieModel>
             ) {
                 if(response.isSuccessful) {
                     response.body()?.let {
-                        movieModels = ArrayList(it)
+                        movieModels = it
 
                         movieModels?.let {
                             movieAdapter = MovieAdapter(it, this@MainActivity)
@@ -59,19 +59,19 @@ class MainActivity : AppCompatActivity(), MovieAdapter.Listener {
                         }
 
                         //for (movieModel: MovieModel in movieModels!!) {
-                        //    println(movieModel.original_title) }
+                        //   println(movieModel.original_title) }
                     }
                 }
             }
 
-            override fun onFailure(call: Call<List<MovieModel>>, t: Throwable) {
+            override fun onFailure(call: Call<MovieModel>, t: Throwable) {
                 t.printStackTrace()
             }
 
         })
     }
 
-    override fun onItemClick(movieModel: MovieModel) {
-        TODO("Not yet implemented")
+    override fun onItemClick(movieModel: com.nazlicanterliksiz.movieapp.model.Result) {
+
     }
 }
