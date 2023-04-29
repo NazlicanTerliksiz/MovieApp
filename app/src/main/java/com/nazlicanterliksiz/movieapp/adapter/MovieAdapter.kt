@@ -7,21 +7,34 @@ import androidx.recyclerview.widget.RecyclerView
 import com.nazlicanterliksiz.movieapp.databinding.MovieCardBinding
 import com.nazlicanterliksiz.movieapp.model.MovieModel
 import com.squareup.picasso.Picasso
+import com.nazlicanterliksiz.movieapp.model.Result
 
 
-class MovieAdapter(private val movieList : MovieModel, private val listener : Listener)
-    : RecyclerView.Adapter<MovieAdapter.RowHolder>() {
+class MovieAdapter(private val movieList: MovieModel, val onItemClickListener: (() -> Unit)) :
+    RecyclerView.Adapter<MovieAdapter.RowHolder>() {
 
-    interface Listener {
-        fun onItemClick(movieModel: com.nazlicanterliksiz.movieapp.model.Result)
-    }
+//    interface Listener {
+//        fun onItemClick(movieModel: com.nazlicanterliksiz.movieapp.model.Result)
+//    }
 
-    class RowHolder(val binding: MovieCardBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class RowHolder(private val binding: MovieCardBinding) : RecyclerView.ViewHolder(binding.root) {
 
+        init {
+            binding.root.setOnClickListener {
+                onItemClickListener.invoke()
+            }
+        }
+        fun bind(movie: Result) {
+            binding.apply {
+                movieNameText.text = movie.original_title
+                val url = "https://image.tmdb.org/t/p/w500"
+                Picasso.get().load(url + movie.poster_path).into(movieImageView)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RowHolder {
-        val binding = MovieCardBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = MovieCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return RowHolder(binding)
     }
 
@@ -34,22 +47,14 @@ class MovieAdapter(private val movieList : MovieModel, private val listener : Li
     //       listener.onItemClick(movieList.results.get(position))
     //  }
 
-     //   holder.binding.movieNameText.text = movieList.results.get(position).original_title
-     //   Picasso.get().load(movieList.results.get(position).poster_path).into(movieImageView)
-     //}
-     override fun onBindViewHolder(holder: RowHolder, position: Int) {
-         val movie = movieList.results.get(position)
-
-         holder.binding.apply {
-             movieNameText.text = movie.original_title
-             val url = "https://image.tmdb.org/t/p/w500"
-             Picasso.get().load(url + movie.poster_path).into(movieImageView)
-         }
-     }
+    //   holder.binding.movieNameText.text = movieList.results.get(position).original_title
+    //   Picasso.get().load(movieList.results.get(position).poster_path).into(movieImageView)
+    //}
+    override fun onBindViewHolder(holder: RowHolder, position: Int) {
+        val movie = movieList.results[position]
+        holder.bind(movie)
+    }
 }
-
-
-
 
 
 /*

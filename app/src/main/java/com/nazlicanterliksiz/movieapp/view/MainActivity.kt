@@ -1,5 +1,6 @@
 package com.nazlicanterliksiz.movieapp.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,13 +17,13 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 //https://api.themoviedb.org/3/movie/popular?api_key=79dc453ffcec8a0d438a6507908916c8
-class MainActivity : AppCompatActivity(), MovieAdapter.Listener {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val BASE_URL = "https://api.themoviedb.org/"
-    private var movieModels : MovieModel? = null
-    private var movieAdapter : MovieAdapter?=null
-    private var job : Job? = null
+    private var movieModels: MovieModel? = null
+    private var movieAdapter: MovieAdapter? = null
+    private var job: Job? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,13 +32,13 @@ class MainActivity : AppCompatActivity(), MovieAdapter.Listener {
         setContentView(view)
 
         val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
-        binding.recyclerView2.layoutManager=layoutManager
+        binding.recyclerView2.layoutManager = layoutManager
 
         loadData()
 
     }
 
-    private fun loadData(){
+    private fun loadData() {
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -47,13 +48,15 @@ class MainActivity : AppCompatActivity(), MovieAdapter.Listener {
         job = CoroutineScope(Dispatchers.IO).launch {
             val response = retrofit.getData()
 
-            withContext(Dispatchers.Main){
-                if(response.isSuccessful){
+            withContext(Dispatchers.Main) {
+                if (response.isSuccessful) {
 
-                    response.body()?.let{
-                        movieModels = it
+                    response.body()?.let { movieModel ->
+                        movieModels = movieModel
                         movieModels?.let {
-                            movieAdapter = MovieAdapter(it, this@MainActivity)
+                            movieAdapter = MovieAdapter(movieModel) {
+                                //CLICK IS HERE
+                            }
                             binding.recyclerView2.adapter = movieAdapter
                         }
                     }
@@ -92,7 +95,8 @@ class MainActivity : AppCompatActivity(), MovieAdapter.Listener {
          */
     }
 
-    override fun onItemClick(movieModel: com.nazlicanterliksiz.movieapp.model.Result) {
-
+    override fun onDestroy() {
+        super.onDestroy()
+        job?.cancel()
     }
 }
