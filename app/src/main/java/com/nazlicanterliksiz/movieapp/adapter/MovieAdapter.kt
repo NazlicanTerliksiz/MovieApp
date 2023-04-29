@@ -1,11 +1,13 @@
 package com.nazlicanterliksiz.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.nazlicanterliksiz.movieapp.databinding.MovieCardBinding
 import com.nazlicanterliksiz.movieapp.model.MovieModel
 import com.squareup.picasso.Picasso
+
 
 class MovieAdapter(private val movieList : MovieModel, private val listener : Listener)
     : RecyclerView.Adapter<MovieAdapter.RowHolder>() {
