@@ -2,7 +2,6 @@ package com.nazlicanterliksiz.movieapp.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.nazlicanterliksiz.movieapp.databinding.ActivityMainBinding
 import com.nazlicanterliksiz.movieapp.databinding.ActivityMovieDetailsBinding
 
 class MovieDetails : AppCompatActivity() {
@@ -15,4 +14,5 @@ class MovieDetails : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
     }
+
 }
