@@ -1,18 +1,13 @@
 package com.nazlicanterliksiz.movieapp.view
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nazlicanterliksiz.adapter.MovieAdapter
 import com.nazlicanterliksiz.movieapp.databinding.ActivityMainBinding
 import com.nazlicanterliksiz.movieapp.model.MovieModel
-import com.nazlicanterliksiz.movieapp.service.MovieAPI
 import kotlinx.coroutines.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -21,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val BASE_URL = "https://api.themoviedb.org/"
-    private var movieModels: MovieModel? = null
+    private var movieModel: MovieModel? = null
     private var movieAdapter: MovieAdapter? = null
     private var job: Job? = null
 
@@ -32,9 +27,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
-        binding.recyclerView2.layoutManager = layoutManager
+        //binding.recyclerView2.layoutManager = layoutManager
 
-        loadData()
 
     }
 
@@ -43,25 +37,12 @@ class MainActivity : AppCompatActivity() {
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(MovieAPI::class.java)
+
 
         job = CoroutineScope(Dispatchers.IO).launch {
-            val response = retrofit.getData()
+            //val response = retrofit.getData()
 
-            withContext(Dispatchers.Main) {
-                if (response.isSuccessful) {
 
-                    response.body()?.let { movieModel ->
-                        movieModels = movieModel
-                        movieModels?.let {
-                            movieAdapter = MovieAdapter(movieModel) {
-                                //CLICK IS HERE
-                            }
-                            binding.recyclerView2.adapter = movieAdapter
-                        }
-                    }
-                }
-            }
         }
 
 

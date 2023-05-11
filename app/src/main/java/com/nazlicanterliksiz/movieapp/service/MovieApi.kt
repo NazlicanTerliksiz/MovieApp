@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
-private const val BASE_URL = "https://api.themoviedb.org/"
+private const val BASE_URL = "https://api.deezer.com/"
 
 private val retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)
@@ -14,7 +14,7 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface MovieApi{
-    @GET("3/movie/popular?api_key=79dc453ffcec8a0d438a6507908916c8")
+    @GET("genre")
     suspend fun getMovie(): Response<MovieModel>
 }
 
