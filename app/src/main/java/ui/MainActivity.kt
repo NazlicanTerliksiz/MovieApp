@@ -1,12 +1,12 @@
-package com.nazlicanterliksiz.movieapp.ui
+package ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.nazlicanterliksiz.adapter.MovieAdapter
+import data.MovieAdapter
 import com.nazlicanterliksiz.movieapp.databinding.ActivityMainBinding
-import com.nazlicanterliksiz.movieapp.dto.MovieModel
+import data.MovieModel
 import kotlinx.coroutines.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

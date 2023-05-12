@@ -3,7 +3,7 @@ package repo
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nazlicanterliksiz.movieapp.data.MovieRetrofit
-import com.nazlicanterliksiz.movieapp.dto.MovieModel
+import data.MovieModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

@@ -1,4 +1,4 @@
-package com.nazlicanterliksiz.movieapp.dto
+package data
 
 import com.google.gson.annotations.SerializedName
 

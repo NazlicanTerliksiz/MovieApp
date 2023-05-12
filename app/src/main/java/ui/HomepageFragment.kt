@@ -1,18 +1,18 @@
-package com.nazlicanterliksiz.movieapp.ui
+package ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.nazlicanterliksiz.adapter.MovieAdapter
+import data.MovieAdapter
 import com.nazlicanterliksiz.movieapp.databinding.FragmentHomePageBinding
 
 class HomepageFragment : Fragment() {
 
     private lateinit var binding: FragmentHomePageBinding
 
-    private val viewModel : HomepageViewModel by lazy { HomepageViewModel()}
+    private val viewModel : HomepageViewModel by lazy { HomepageViewModel() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
