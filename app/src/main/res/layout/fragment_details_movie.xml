@@ -6,7 +6,7 @@
     tools:context="ui.DetailsMovie">
 
     <ImageView
-        android:id="@+id/MoviePathImageView"
+        android:id="@+id/moviePathImageView"
         android:layout_width="180dp"
         android:layout_height="181dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +24,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MoviePathImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/moviePathImageView" />
 
     <TextView
         android:id="@+id/movieVoteCountText"
