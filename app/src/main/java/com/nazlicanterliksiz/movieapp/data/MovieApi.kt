@@ -1,6 +1,6 @@
-package com.nazlicanterliksiz.movieapp.service
+package com.nazlicanterliksiz.movieapp.data
 
-import com.nazlicanterliksiz.movieapp.model.MovieModel
+import com.nazlicanterliksiz.movieapp.dto.MovieModel
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

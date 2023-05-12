@@ -1,11 +1,10 @@
-package com.nazlicanterliksiz.movieapp.view
+package com.nazlicanterliksiz.movieapp.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import com.nazlicanterliksiz.adapter.MovieAdapter
 import com.nazlicanterliksiz.movieapp.databinding.FragmentHomePageBinding
 
@@ -26,12 +25,12 @@ class HomepageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getMovies()
+        viewModel.movieModelList
         observe()
     }
 
     private fun observe(){
-        viewModel.movie.observe(viewLifecycleOwner){
+        viewModel.movieModelList.observe(viewLifecycleOwner){
             binding.movieRV.adapter = MovieAdapter(it){
 
             }

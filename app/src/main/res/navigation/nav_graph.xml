@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homepageFragment"
-        android:name="com.nazlicanterliksiz.movieapp.view.HomepageFragment"
+        android:name="com.nazlicanterliksiz.movieapp.ui.HomepageFragment"
         android:label="fragment_home_page"
         tools:layout="@layout/fragment_home_page" />
 </navigation>

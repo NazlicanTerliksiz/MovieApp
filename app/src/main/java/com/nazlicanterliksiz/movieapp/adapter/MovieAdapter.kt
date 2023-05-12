@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.nazlicanterliksiz.movieapp.databinding.MovieCardBinding
-import com.nazlicanterliksiz.movieapp.model.MovieModel
+import com.nazlicanterliksiz.movieapp.dto.MovieModel
 import com.squareup.picasso.Picasso
 
 
@@ -18,7 +18,7 @@ class MovieAdapter(private val movieList: MovieModel, val onItemClickListener: (
                 onItemClickListener.invoke()
             }
         }
-        fun bind(movie: com.nazlicanterliksiz.movieapp.model.Result) {
+        fun bind(movie: com.nazlicanterliksiz.movieapp.dto.Result) {
             binding.apply {
                 movieNameText.text = movie.originalTitle
                 val url = "https://image.tmdb.org/t/p/w500"

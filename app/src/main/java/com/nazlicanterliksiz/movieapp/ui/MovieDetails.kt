@@ -1,4 +1,4 @@
-package com.nazlicanterliksiz.movieapp.view
+package com.nazlicanterliksiz.movieapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
