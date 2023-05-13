@@ -1,16 +1,13 @@
 package ui
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.nazlicanterliksiz.movieapp.R
 import com.nazlicanterliksiz.movieapp.databinding.FragmentDetailsMovieBinding
-import data.MovieModel
 
-class DetailsMovie : Fragment() {
+class MovieDetailFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailsMovieBinding
 

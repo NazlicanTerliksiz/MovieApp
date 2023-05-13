@@ -1,5 +1,6 @@
 package ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +13,7 @@ class HomepageFragment : Fragment() {
 
     private lateinit var binding: FragmentHomePageBinding
 
-    private val viewModel : HomepageViewModel by lazy { HomepageViewModel() }
+    private val viewModel: HomepageViewModel by lazy { HomepageViewModel() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,11 +30,13 @@ class HomepageFragment : Fragment() {
         observe()
     }
 
-    private fun observe(){
-        viewModel.movieModelList.observe(viewLifecycleOwner){
-            binding.movieRV.adapter = MovieAdapter(it){
-
-            }
+    private fun observe() {
+        viewModel.movieModelList.observe(viewLifecycleOwner) {
+            binding.movieRV.adapter = MovieAdapter(it, onItemClickListener = {
+                //val intent = Intent(binding.root.context,DetailsMovie::class.java)
+                //binding.root.context.startActivity(intent)
+                // CALL NAVIGATION METHOD
+            })
 
         }
     }
