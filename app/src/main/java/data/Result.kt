@@ -2,6 +2,7 @@ package data
 
 import com.google.gson.annotations.SerializedName
 
+//Lets named as movie!
 data class Result(
     @SerializedName("adult")
     val adult: Boolean,

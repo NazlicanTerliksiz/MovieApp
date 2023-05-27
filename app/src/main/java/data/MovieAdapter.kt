@@ -7,22 +7,18 @@ import com.nazlicanterliksiz.movieapp.databinding.MovieCardBinding
 import com.squareup.picasso.Picasso
 
 
-class MovieAdapter(private val movieList: MovieModel, val onItemClickListener: (() -> Unit)) :
+class MovieAdapter(private val movieList: MovieModel, val onItemClickListener: ((Int) -> Unit)) :
     RecyclerView.Adapter<MovieAdapter.RowHolder>() {
 
     inner class RowHolder(private val binding: MovieCardBinding) : RecyclerView.ViewHolder(binding.root) {
-
-
-        init {
-            binding.root.setOnClickListener {
-                onItemClickListener.invoke()
-            }
-        }
         fun bind(movie: Result) {
             binding.apply {
                 movieNameText.text = movie.originalTitle
                 val url = "https://image.tmdb.org/t/p/w500"
                 Picasso.get().load(url + movie.posterPath).into(movieImageView)
+                root.setOnClickListener {
+                    onItemClickListener.invoke(movie.id)
+                }
             }
         }
     }

@@ -13,8 +13,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
 
-
-    private val viewModel : HomeViewModel by lazy { HomeViewModel() }
+    private val viewModel: HomeViewModel by lazy { HomeViewModel() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,10 +32,14 @@ class HomeFragment : Fragment() {
 
     private fun observe() {
         viewModel.movieModelList.observe(viewLifecycleOwner) {
-            binding.movieRV.adapter = MovieAdapter(it, onItemClickListener = {
+            binding.movieRV.adapter = MovieAdapter(it, onItemClickListener = { id ->
                 //val intent = Intent(binding.root.context,DetailsMovie::class.java)
                 //binding.root.context.startActivity(intent)
-                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToMovieDatailFragment2("","",""))
+                findNavController().navigate(
+                    HomeFragmentDirections.actionHomeFragmentToMovieDetailFragment2(
+                        id
+                    )
+                )
             })
         }
     }

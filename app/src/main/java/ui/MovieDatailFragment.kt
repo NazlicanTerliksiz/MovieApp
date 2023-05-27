@@ -1,6 +1,7 @@
 package ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,11 +10,12 @@ import androidx.navigation.fragment.navArgs
 import com.nazlicanterliksiz.movieapp.databinding.FragmentDetailMovieBinding
 import com.squareup.picasso.Picasso
 
-class MovieDatailFragment : Fragment() {
+//Name issue fix
+class MovieDetailFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailMovieBinding
     private val BASE_IMG_URL = "https://image.tmdb.org/t/p/w500"
-    private val args: MovieDatailFragmentArgs by navArgs()
+    private val args: MovieDetailFragmentArgs by navArgs()
 
 
     override fun onCreateView(
@@ -28,13 +30,20 @@ class MovieDatailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Picasso.get().load(BASE_IMG_URL + args.posterPath).into(binding.moviePathImageView)
+        val id = arguments?.let {
+            MovieDetailFragmentArgs.fromBundle(it).id
+        }
+
+        Log.e("ID:",id.toString())
+
+
+       // Picasso.get().load(BASE_IMG_URL + args.posterPath).into(binding.moviePathImageView)
 
         binding.apply {
-            movieTitleText.text = args.originalTitle.toString()
-            movieVoteAverageText.text = args.voteAverage.toString()
-            movieVoteCountText.text = args.voteCount.toString()
-            movieOverviewText.text = args.overview.toString()
+//            movieTitleText.text = args.originalTitle.toString()
+//            movieVoteAverageText.text = args.voteAverage.toString()
+//            movieVoteCountText.text = args.voteCount.toString()
+//            movieOverviewText.text = args.overview.toString()
         }
     }
 }
