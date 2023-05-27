@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.nazlicanterliksiz.movieapp.databinding.MovieCardBinding
 import com.squareup.picasso.Picasso
-import ui.DetailsMovie
 
 
 class MovieAdapter(private val movieList: MovieModel, val onItemClickListener: (() -> Unit)) :
@@ -17,8 +16,6 @@ class MovieAdapter(private val movieList: MovieModel, val onItemClickListener: (
 
         init {
             binding.root.setOnClickListener {
-                val intent = Intent(binding.root.context,DetailsMovie::class.java)
-                binding.root.context.startActivity(intent)
                 onItemClickListener.invoke()
             }
         }

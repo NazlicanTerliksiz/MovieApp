@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import data.MovieAdapter
 import com.nazlicanterliksiz.movieapp.databinding.FragmentHomePageBinding
 
@@ -12,7 +13,7 @@ class HomepageFragment : Fragment() {
 
     private lateinit var binding: FragmentHomePageBinding
 
-    private val viewModel : HomepageViewModel by lazy { HomepageViewModel() }
+    private val viewModel : HomeViewModel by lazy { HomeViewModel() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,10 +32,9 @@ class HomepageFragment : Fragment() {
 
     private fun observe(){
         viewModel.movieModelList.observe(viewLifecycleOwner){
-            binding.movieRV.adapter = MovieAdapter(it){
-
-            }
-
+            binding.movieRV.adapter = MovieAdapter(it, onItemClickListener = {
+                findNavController().navigate(HomepageFragmentDirections.actionHomepageFragmentToDetailsMovieFragment("","",""))
+            })
         }
     }
 }

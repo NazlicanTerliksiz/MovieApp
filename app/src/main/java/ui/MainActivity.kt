@@ -44,36 +44,6 @@ class MainActivity : AppCompatActivity() {
 
 
         }
-
-
-        /*
-        val service = retrofit.create(MovieAPI::class.java)
-        val call = service.getData()
-        call.enqueue(object: Callback<MovieModel>{
-            override fun onResponse(
-                call: Call<MovieModel>,
-                response: Response<MovieModel>
-            ) {
-                if(response.isSuccessful) {
-                    response.body()?.let {
-                        movieModels = it
-
-                        movieModels?.let {
-                            c
-                        }
-
-                        //for (movieModel: MovieModel in movieModels!!) {
-                        //   println(movieModel.original_title) }
-                    }
-                }
-            }
-
-            override fun onFailure(call: Call<MovieModel>, t: Throwable) {
-                t.printStackTrace()
-            }
-
-        })
-         */
     }
 
     override fun onDestroy() {

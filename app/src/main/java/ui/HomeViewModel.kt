@@ -5,18 +5,18 @@ import androidx.lifecycle.ViewModel
 import data.MovieModel
 import repo.MovieRepository
 
-class HomepageViewModel : ViewModel() {
+class HomeViewModel : ViewModel() {
 
-    private val movierepo = MovieRepository()
+    private val movieRepo = MovieRepository()
     var movieModelList = MutableLiveData<MovieModel>()
 
     init {
         getMovieFromRepo()
-        movieModelList = movierepo.getMov()
+        movieModelList = movieRepo.getMov()
     }
 
     private fun getMovieFromRepo(){
-        movierepo.getMovies()
+        movieRepo.getMovies()
     }
 }
 
