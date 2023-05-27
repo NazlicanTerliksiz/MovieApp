@@ -5,24 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.navArgs
-import com.nazlicanterliksiz.movieapp.databinding.FragmentDetailsMovieBinding
+import com.nazlicanterliksiz.movieapp.databinding.FragmentDetailMovieBinding
 import com.squareup.picasso.Picasso
-import data.MovieModel
 
-class MovieDatailsFragment : Fragment() {
+class MovieDatailFragment : Fragment() {
 
-    private lateinit var binding: FragmentDetailsMovieBinding
+    private lateinit var binding: FragmentDetailMovieBinding
     private val BASE_IMG_URL = "https://image.tmdb.org/t/p/w500"
-    private val args: MovieDatailsFragmentArgs by navArgs()
+    private val args: MovieDatailFragmentArgs by navArgs()
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentDetailsMovieBinding.inflate(layoutInflater)
+        binding = FragmentDetailMovieBinding.inflate(layoutInflater)
         return binding.root
 
     }
@@ -40,3 +38,11 @@ class MovieDatailsFragment : Fragment() {
         }
     }
 }
+/*
+val intent = Intent
+val movieModel = intent.getSerializableExtra("movieModel") as MovieModel
+binding.moviePathImageView.text = movieModel.posterPath
+binding.movieTitleText.text = movieModel.originalTitle
+binding.movieVoteCountText.text = movieModel.voteCount
+binding.movieOverviewText.text = movieModel.overview
+ */
