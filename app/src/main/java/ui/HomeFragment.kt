@@ -36,7 +36,7 @@ class HomeFragment : Fragment() {
             binding.movieRV.adapter = MovieAdapter(it, onItemClickListener = {
                 //val intent = Intent(binding.root.context,DetailsMovie::class.java)
                 //binding.root.context.startActivity(intent)
-                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToMovieDatailFragment2())
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToMovieDatailFragment2("","",""))
             })
         }
     }
